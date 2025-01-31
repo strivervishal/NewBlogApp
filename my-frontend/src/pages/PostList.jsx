@@ -14,13 +14,15 @@ function PostList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/posts")
+      .get("https://new-blog-app-9vuq.vercel.app/api/posts")
       .then((res) => setPosts(res.data));
   }, []);
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`);
+      await axios.delete(
+        `https://new-blog-app-9vuq.vercel.app/api/posts/${id}`
+      );
       setPosts(posts.filter((post) => post._id !== id));
     }
   };

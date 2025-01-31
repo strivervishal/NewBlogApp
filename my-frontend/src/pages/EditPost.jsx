@@ -13,7 +13,7 @@ function EditPost() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/posts/${id}`)
+      .get(`https://new-blog-app-9vuq.vercel.app/api/posts/${id}`)
       .then((res) => setFormData(res.data));
   }, [id]);
 
@@ -23,7 +23,10 @@ function EditPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:5000/api/posts/${id}`, formData);
+    await axios.put(
+      `https://new-blog-app-9vuq.vercel.app/api/posts/${id}`,
+      formData
+    );
     navigate("/");
   };
 
