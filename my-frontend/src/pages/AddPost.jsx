@@ -15,12 +15,12 @@ function AddPost() {
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required"),
       image: Yup.string()
-        .url("Please enter a valid URL for the image") // Ensures valid URL
+        .url("Please enter a valid URL for the image")
         .required("Image URL is required"),
       description: Yup.string().required("Description is required"),
     }),
     onSubmit: async (values) => {
-      await axios.post("http://localhost:5000/api/posts", values);
+      await axios.post("https://new-blog-app-ten.vercel.app/api/posts", values);
       navigate("/");
     },
   });

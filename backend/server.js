@@ -5,7 +5,13 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://new-blog-app-7rnc.vercel.app",
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
+  })
+);
 
 connectDB();
 app.use("/api/posts", require("./routes/postRoutes"));
