@@ -8,7 +8,7 @@ function ViewPost() {
 
   useEffect(() => {
     axios
-      .get(`https://new-blog-app-9vuq.vercel.app/api/posts/${id}`)
+      .get(`http://localhost:5000/api/posts/${id}`)
       .then((res) => setPost(res.data));
   }, [id]);
 

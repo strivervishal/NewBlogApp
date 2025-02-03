@@ -1,6 +1,8 @@
 import React from "react";
 
 function Pagination({ currentPage, totalPages, onPageChange }) {
+  if (totalPages <= 1) return null; // Hide pagination if only 1 page
+
   const handlePrev = () => {
     if (currentPage > 1) onPageChange(currentPage - 1);
   };
@@ -13,13 +15,10 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
     onPageChange(page);
   };
 
-  const pages = [];
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="flex items-center justify-center gap-4 py-4">
+    <div className="flex items-center justify-center gap-2 py-4">
       <button
         onClick={handlePrev}
         disabled={currentPage === 1}
@@ -27,6 +26,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       >
         &laquo; Prev
       </button>
+
       {pages.map((page) => (
         <button
           key={page}
@@ -40,6 +40,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
           {page}
         </button>
       ))}
+
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
@@ -47,6 +48,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
       >
         Next &raquo;
       </button>
+
       <div className="ml-4 text-sm text-gray-600">
         Page {currentPage} of {totalPages}
       </div>

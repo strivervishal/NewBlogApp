@@ -5,11 +5,7 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://new-blog-app-phi.vercel.app/",
-  })
-);
+app.use(cors());
 
 connectDB();
 app.use("/api/posts", require("./routes/postRoutes"));

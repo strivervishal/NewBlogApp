@@ -20,10 +20,7 @@ function AddPost() {
       description: Yup.string().required("Description is required"),
     }),
     onSubmit: async (values) => {
-      await axios.post(
-        "https://new-blog-app-9vuq.vercel.app/api/posts",
-        values
-      );
+      await axios.post("http://localhost:5000/api/posts", values);
       navigate("/");
     },
   });
